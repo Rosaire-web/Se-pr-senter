@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Pronom ON - Leçon et Quiz Simplifiés</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        frBlue: '#002654',
+                        frRed: '#ED2939',
+                        frLightBlue: '#1D70B8',
+                        frBg: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .animated-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animated-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-full flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-frBlue text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="flex h-8 w-10 rounded overflow-hidden shadow-inner border border-white/20">
+                    <div class="w-1/3 bg-blue-700"></div>
+                    <div class="w-1/3 bg-white"></div>
+                    <div class="w-1/3 bg-red-600"></div>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight leading-none text-white">Le Pronom <span class="text-red-400">« ON »</span></h1>
+                    <p class="text-xs text-slate-300 font-light mt-0.5">Grammaire Facile • Sens et Conjugaison du Verbe</p>
+                </div>
+            </div>
+            
+            <div class="hidden sm:flex items-center space-x-3 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+                <i class="fa-solid fa-graduation-cap text-amber-300"></i>
+                <span class="text-xs font-medium text-white">Niveau : Débutant / Intermédiaire</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full">
+
+        <!-- Navigation Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-200 pb-3">
+            <button onclick="switchTab('sens')" id="tab-sens" class="tab-btn active inline-flex items-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 bg-frBlue text-white shadow-sm">
+                <i class="fa-solid fa-shapes mr-2"></i> 1. Les 3 Sens de « ON »
+            </button>
+            <button onclick="switchTab('conjugaison')" id="tab-conjugaison" class="tab-btn inline-flex items-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200">
+                <i class="fa-solid fa-pen-ruler mr-2"></i> 2. La Conjugaison
+            </button>
+            <button onclick="switchTab('vs')" id="tab-vs" class="tab-btn inline-flex items-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200">
+                <i class="fa-solid fa-arrows-rotate mr-2"></i> 3. « ON » vs « NOUS »
+            </button>
+            <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn inline-flex items-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200">
+                <i class="fa-solid fa-dumbbell mr-2"></i> 4. Exercices
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn inline-flex items-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200">
+                <i class="fa-solid fa-circle-question mr-2"></i> 5. Grand Quiz
+            </button>
+        </div>
+
+        <!-- TAB 1: LES SENS DE ON -->
+        <section id="content-sens" class="tab-content space-y-6">
+            <div class="bg-blue-50 border-l-4 border-frBlue p-4 rounded-r-xl shadow-sm">
+                <div class="flex items-start">
+                    <i class="fa-solid fa-lightbulb text-frBlue text-xl mr-3 mt-0.5"></i>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-base">À savoir absolument :</h3>
+                        <p class="text-sm text-slate-700 mt-0.5">Le pronom <strong class="text-frBlue">« ON »</strong> est un pronom sujet. Il remplace des personnes, mais sa signification change selon la phrase !</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-lg font-bold text-slate-800 flex items-center">
+                <i class="fa-solid fa-hand-pointer text-frBlue mr-2"></i> Cliquez sur une carte pour voir les détails :
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Card 1: Nous -->
+                <div onclick="selectSenseCard('nous')" id="card-nous" class="animated-card cursor-pointer bg-white rounded-2xl border-2 border-blue-500 shadow-md p-5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Parler de tous les jours</div>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">1. ON = NOUS</h3>
+                        <p class="text-xs font-bold text-blue-600 mb-2">À l'oral avec les amis / la famille</p>
+                        <p class="text-sm text-slate-600">On l'utilise pour parler d'un groupe où je suis présent.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exemple :</p>
+                        <p class="text-sm font-medium text-slate-800">« Ce soir, <strong class="text-blue-600">on mange</strong> une pizza. »</p>
+                        <p class="text-xs text-slate-500 italic mt-0.5">(= Nous mangeons une pizza)</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tout le monde / Généralité -->
+                <div onclick="selectSenseCard('general')" id="card-general" class="animated-card cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md p-5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Généralité</div>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-earth-americas"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">2. ON = LES GENS</h3>
+                        <p class="text-xs font-bold text-emerald-600 mb-2">Tout le monde / Une règle</p>
+                        <p class="text-sm text-slate-600">On l'utilise pour parler d'une habitude générale ou d'une règle.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exemple :</p>
+                        <p class="text-sm font-medium text-slate-800">« En France, <strong class="text-emerald-600">on parle</strong> français. »</p>
+                        <p class="text-xs text-slate-500 italic mt-0.5">(= Les gens en France parlent français)</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Quelqu'un / Indéfini -->
+                <div onclick="selectSenseCard('indefini')" id="card-indefini" class="animated-card cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md p-5 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Inconnu</div>
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mb-3">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-1">3. ON = QUELQU'UN</h3>
+                        <p class="text-xs font-bold text-amber-600 mb-2">Personne inconnue</p>
+                        <p class="text-sm text-slate-600">On l'utilise quand on ne sait pas exactement qui fait l'action.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 -mx-5 -mb-5 p-4 rounded-b-2xl">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exemple :</p>
+                        <p class="text-sm font-medium text-slate-800">« Écoute, <strong class="text-amber-600">on frappe</strong> à la porte ! »</p>
+                        <p class="text-xs text-slate-500 italic mt-0.5">(= Quelqu'un frappe à la porte)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Detail Area -->
+            <div id="senseDetailArea" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <!-- Content injected via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 2: LA CONJUGAISON DU VERBE -->
+        <section id="content-conjugaison" class="tab-content hidden space-y-6">
+            <!-- Main Rule Card -->
+            <div class="bg-gradient-to-r from-frBlue to-blue-900 text-white rounded-2xl p-6 sm:p-8 shadow-md">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-2xl">
+                        <span class="bg-frRed text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">LA RÈGLE D'OR</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">Le verbe avec « ON » est TOUJOURS au SINGULIER !</h2>
+                        <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                            Même si « ON » veut dire « NOUS », le verbe se conjugue <strong>exactement comme avec IL ou ELLE</strong> (3ᵉ personne du singulier).
+                        </p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center min-w-[200px]">
+                        <span class="text-xs text-blue-200 uppercase tracking-wider block font-semibold mb-1">Pronom équivalent :</span>
+                        <div class="text-2xl font-black text-amber-300">IL / ELLE / ON</div>
+                        <span class="text-xs text-blue-200 mt-1 block">Même terminaison !</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verb Comparison Cards -->
+            <h3 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-list-check text-frBlue mr-2"></i> Exemples au Présent de l'indicatif :</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Verbe Parler -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe PARLER</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">1ᵉʳ groupe</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">parl<strong class="text-frBlue">e</strong></span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span>parl<span class="text-frRed">e</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On parlons ❌</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verbe Manger -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe MANGER</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">1ᵉʳ groupe</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">mang<strong class="text-frBlue">e</strong></span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span>mang<span class="text-frRed">e</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On mangeons ❌</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verbe Être -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe ÊTRE</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Irrégulier</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">est</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span><span class="text-frRed">est</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On sommes ❌</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verbe Avoir -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe AVOIR</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Irrégulier</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">a</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span><span class="text-frRed">a</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On avons ❌</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verbe Aller -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe ALLER</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Irrégulier</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">va</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span><span class="text-frRed">va</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On allons ❌</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verbe Faire -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <span class="font-bold text-slate-900">Verbe FAIRE</span>
+                        <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Irrégulier</span>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>Il / Elle :</span>
+                            <span class="font-medium">fait</span>
+                        </li>
+                        <li class="flex items-center justify-between bg-emerald-50 p-2 rounded-lg text-emerald-900 font-bold border border-emerald-200">
+                            <span>ON :</span>
+                            <span><span class="text-frRed">fait</span></span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-400 line-through text-xs pt-1">
+                            <span>À ne pas faire :</span>
+                            <span>On faisons ❌</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tip Banner -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center space-x-3">
+                <i class="fa-solid fa-wand-magic-sparkles text-amber-600 text-xl flex-shrink-0"></i>
+                <p class="text-xs sm:text-sm text-amber-900">
+                    <strong>Astuce Magique :</strong> Pour vérifier si votre phrase est correcte, remplacez « ON » par « IL ». Si la phrase fonctionne, le verbe est bien conjugué !
+                </p>
+            </div>
+        </section>
+
+        <!-- TAB 3: ON vs NOUS -->
+        <section id="content-vs" class="tab-content hidden space-y-6">
+            <div class="text-center max-w-xl mx-auto mb-4">
+                <h2 class="text-2xl font-bold text-slate-900">« ON » ou « NOUS » ?</h2>
+                <p class="text-slate-600 text-sm mt-1">Ces deux mots veulent dire la même chose, mais on ne les utilise pas au même endroit.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- ON Box -->
+                <div class="bg-white rounded-2xl shadow-sm border-2 border-frBlue overflow-hidden">
+                    <div class="bg-frBlue p-4 text-white flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-comments text-xl"></i>
+                            <h3 class="text-xl font-bold">ON</h3>
+                        </div>
+                        <span class="bg-blue-800 text-blue-100 text-xs px-3 py-1 rounded-full font-bold">Langue Parlée</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Utilisé à l'<strong>oral</strong>, dans la rue, avec la famille et les amis.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Plus simple et plus rapide à dire.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Le verbe est au <strong>singulier</strong>.</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="border-t border-slate-100 pt-4 bg-slate-50 rounded-xl p-4">
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-2">À l'oral :</p>
+                            <p class="text-sm font-semibold text-slate-800">« Qu'est-ce qu'<strong class="text-frBlue">on fait</strong> cet après-midi ? »</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOUS Box -->
+                <div class="bg-white rounded-2xl shadow-sm border-2 border-slate-300 overflow-hidden">
+                    <div class="bg-slate-800 p-4 text-white flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-book-open text-xl"></i>
+                            <h3 class="text-xl font-bold">NOUS</h3>
+                        </div>
+                        <span class="bg-slate-700 text-slate-200 text-xs px-3 py-1 rounded-full font-bold">Langue Écrite / Polie</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Utilisé dans les <strong>livres</strong>, les devoirs d'école et les lettres officielles.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Plus poli et plus formel.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-emerald-500 mr-2.5 mt-1"></i>
+                                <span>Le verbe finit souvent par <strong>-ONS</strong>.</span>
+                            </li>
+                        </ul>
+
+                        <div class="border-t border-slate-100 pt-4 bg-slate-50 rounded-xl p-4">
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-2">À l'écrit :</p>
+                            <p class="text-sm font-semibold text-slate-800">« <strong class="text-slate-900">Nous faisons</strong> des exercices de français. »</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Sentence Converter -->
+            <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-lg font-bold flex items-center text-white">
+                        <i class="fa-solid fa-rotate text-amber-400 mr-2.5"></i> Convertisseur Interactif (NOUS ↔ ON)
+                    </h3>
+                </div>
+                <p class="text-xs text-slate-300 mb-4">Cliquez sur n'importe quelle phrase ci-dessous pour la transformer :</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="convertorGrid">
+                    <!-- Dynamic interactive converter items -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: EXERCICES PRATIQUES -->
+        <section id="content-practice" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900">Exercices de Conjugaison</h2>
+                        <p class="text-sm text-slate-600">Choisissez la bonne forme du verbe au présent pour compléter la phrase.</p>
+                    </div>
+                    <span id="practiceScore" class="bg-blue-50 text-frBlue font-bold text-sm px-3.5 py-1.5 rounded-xl border border-blue-200 self-start sm:self-auto">
+                        Score : 0/4
+                    </span>
+                </div>
+
+                <div class="space-y-6" id="practiceQuestionsContainer">
+                    <!-- Practice items injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: GRAND QUIZ -->
+        <section id="content-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200 max-w-2xl mx-auto">
+                <!-- Quiz Start Card -->
+                <div id="quizStartView" class="text-center py-6">
+                    <div class="w-20 h-20 bg-red-100 text-frRed rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Le Grand Quiz du Pronom ON</h2>
+                    <p class="text-slate-600 text-sm max-w-md mx-auto mb-6">Répondez à 5 questions pour vérifier que vous avez tout compris sur le pronom « ON » !</p>
+                    <button onclick="startQuiz()" class="bg-frRed hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105">
+                        Commencer le Quiz <i class="fa-solid fa-play ml-2 text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Quiz Question Active Container -->
+                <div id="quizActiveView" class="hidden">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                        <span id="quizQuestionCounter" class="text-xs font-extrabold uppercase tracking-wider text-frBlue">Question 1 / 5</span>
+                        <div class="flex items-center space-x-1.5">
+                            <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                            <span id="quizScoreDisplay" class="text-sm font-bold text-slate-700">Score : 0</span>
+                        </div>
+                    </div>
+
+                    <h3 id="quizQuestionText" class="text-base sm:text-lg font-bold text-slate-900 mb-4"></h3>
+
+                    <div id="quizOptionsContainer" class="space-y-3 mb-6"></div>
+
+                    <div id="quizFeedbackBox" class="hidden p-4 rounded-xl mb-6 text-sm"></div>
+
+                    <div class="flex justify-end">
+                        <button id="quizNextBtn" onclick="nextQuizQuestion()" disabled class="bg-slate-200 text-slate-400 font-bold py-2.5 px-6 rounded-xl transition-all cursor-not-allowed">
+                            Question Suivante <i class="fa-solid fa-chevron-right ml-1 text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result View -->
+                <div id="quizResultView" class="hidden text-center py-6">
+                    <div id="quizResultIcon" class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mx-auto mb-4"></div>
+                    <h2 id="quizResultTitle" class="text-2xl font-bold text-slate-900 mb-1"></h2>
+                    <p id="quizResultSubtitle" class="text-slate-600 text-sm mb-4"></p>
+                    <div class="bg-slate-50 rounded-xl p-4 inline-block mb-6 border border-slate-200">
+                        <span class="text-xs text-slate-500 block uppercase font-bold tracking-wider">Score Final</span>
+                        <span id="quizFinalScore" class="text-3xl font-extrabold text-frBlue">0 / 5</span>
+                    </div>
+                    <div>
+                        <button onclick="startQuiz()" class="bg-frBlue hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-xl shadow transition-all">
+                            <i class="fa-solid fa-rotate-right mr-2"></i> Recommencer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-1">
+            <p class="text-slate-300 font-medium">Leçon de Grammaire Française : Le pronom sujet « ON »</p>
+            <p class="text-slate-500">Conçu pour l'apprentissage du français au niveau débutant.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data for Tab 1 Detail View
+        const senseData = {
+            nous: {
+                title: "Sens 1 : « ON » remplace « NOUS »",
+                badge: "Langue Parlée",
+                badgeColor: "bg-blue-100 text-blue-800",
+                description: "C'est l'utilisation la plus courante dans la vie de tous les jours. Quand on parle avec des amis ou sa famille, on dit « ON » au lieu de « NOUS ».",
+                examples: [
+                    { text: "Mes amis et moi, <strong class="text-frBlue">on joue</strong> au football.", sub: "= Nous jouons" },
+                    { text: "Avec ma sœur, <strong class="text-frBlue">on habite</strong> à Paris.", sub: "= Nous habitons" }
+                ]
+            },
+            general: {
+                title: "Sens 2 : « ON » désignes Tout le monde",
+                badge: "Généralité",
+                badgeColor: "bg-emerald-100 text-emerald-800",
+                description: "Utilisé pour parler d'une habitude générale, d'une règle ou d'une vérité qui s'applique à tout le monde.",
+                examples: [
+                    { text: "En hiver, <strong class="text-emerald-600">on met</strong> un manteau chaud.", sub: "Tout le monde fait ça" },
+                    { text: "À l'école, <strong class="text-emerald-600">on écoute</strong> le professeur.", sub: "Règle pour tous" }
+                ]
+            },
+            indefini: {
+                title: "Sens 3 : « ON » désignes Quelqu'un d'inconnu",
+                badge: "Inconnu",
+                badgeColor: "bg-amber-100 text-amber-800",
+                description: "Utilisé quand une action est faite par une personne, mais qu'on ne sait pas du tout qui c'est !",
+                examples: [
+                    { text: "<strong class="text-amber-600">On a sonné</strong> à la porte.", sub: "Quelqu'un a sonné (je ne sais pas qui)" },
+                    { text: "<strong class="text-amber-600">On me demande</strong> au téléphone.", sub: "Une personne inconnue" }
+                ]
+            }
+        };
+
+        // Data for Interactive Converter
+        const converterItems = [
+            { nous: "Nous chantons une chanson.", on: "On chante une chanson." },
+            { nous: "Nous mangeons une pomme.", on: "On mange une pomme." },
+            { nous: "Nous allons à la piscine.", on: "On va à la piscine." },
+            { nous: "Nous regardons un film.", on: "On regarde un film." }
+        ];
+
+        // Practice Questions (No past participles)
+        const practiceData = [
+            {
+                id: 1,
+                question: "Lucas et moi, on _______ au parc après l'école.",
+                options: ["va", "allons", "vont"],
+                correct: 0,
+                explanation: "Le sujet est 'ON'. Même s'il veut dire 'nous', le verbe 'aller' se conjugue au singulier : 'on va'."
+            },
+            {
+                id: 2,
+                question: "En France, on _______ français.",
+                options: ["parlons", "parlent", "parle"],
+                correct: 2,
+                explanation: "Avec le pronom 'ON', le verbe 'parler' prend un 'e' au présent : 'on parle'."
+            },
+            {
+                id: 3,
+                question: "Qu'est-ce qu'on _______ à la cantine ce midi ?",
+                options: ["mangeons", "mange", "mangent"],
+                correct: 1,
+                explanation: "Le verbe 'manger' avec 'ON' est à la 3e personne du singulier : 'mange'."
+            },
+            {
+                id: 4,
+                question: "Mon frère et moi, on _______ de la musique.",
+                options: ["écoute", "écoutons", "écoutent"],
+                correct: 0,
+                explanation: "Rappelez-vous : 'ON' = 'IL' pour la conjugaison du verbe ! Donc : 'on écoute'."
+            }
+        ];
+
+        // Quiz Questions (No past participles)
+        const quizData = [
+            {
+                question: "Comment se conjugue le verbe quand le sujet est « ON » ?",
+                options: [
+                    "Toujours comme avec IL ou ELLE (3e personne du singulier).",
+                    "Toujours comme avec NOUS (1re personne du pluriel).",
+                    "Cela dépend si on est plusieurs.",
+                    "Comme avec vous."
+                ],
+                correct: 0,
+                explanation: "Règle d'or : le verbe avec 'ON' est TOUJOURS conjugué à la 3e personne du singulier (comme avec 'il' ou 'elle')."
+            },
+            {
+                question: "Quelle phrase est correcte au présent ?",
+                options: [
+                    "On mangeons une glace.",
+                    "On mange une glace.",
+                    "On mangent une glace.",
+                    "On mangiez une glace."
+                ],
+                correct: 1,
+                explanation: "La forme correcte est 'On mange' (verbe au singulier)."
+            },
+            {
+                question: "Dans la phrase : « Écoute, on toque à la porte ! », que signifie « ON » ?",
+                options: [
+                    "Nous (moi et mes amis)",
+                    "Tout le monde",
+                    "Quelqu'un d'inconnu",
+                    "Personne"
+                ],
+                correct: 2,
+                explanation: "Ici 'ON' veut dire qu'une personne inconnue toque à la porte."
+            },
+            {
+                question: "Transformez la phrase « Nous faisons nos devoirs » pour le langage parlé :",
+                options: [
+                    "On faisons nos devoirs.",
+                    "On fait nos devoirs.",
+                    "On font nos devoirs.",
+                    "On faisez nos devoirs."
+                ],
+                correct: 1,
+                explanation: "Le verbe 'faire' avec 'ON' donne : 'On fait'."
+            },
+            {
+                question: "Complétez : « Mes parents et moi, on _______ en vacances demain. »",
+                options: [
+                    "partons",
+                    "partent",
+                    "part",
+                    "partir"
+                ],
+                correct: 2,
+                explanation: "Le verbe 'partir' se conjugue 'part' avec 'ON' (comme 'il part')."
+            }
+        ];
+
+        // State Management
+        let currentTab = 'sens';
+        let practiceState = {};
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+        let quizAnswered = false;
+
+        window.onload = function() {
+            selectSenseCard('nous');
+            renderConverter();
+            renderPracticeQuestions();
+        };
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-frBlue', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+                activeBtn.classList.add('bg-frBlue', 'text-white', 'shadow-sm');
+            }
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const targetContent = document.getElementById(`content-${tabId}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+        }
+
+        function selectSenseCard(key) {
+            const data = senseData[key];
+            if (!data) return;
+
+            ['nous', 'general', 'indefini'].forEach(k => {
+                const card = document.getElementById(`card-${k}`);
+                if (k === key) {
+                    card.classList.add('border-2', 'border-blue-500');
+                    card.classList.remove('border', 'border-slate-200');
+                } else {
+                    card.classList.remove('border-2', 'border-blue-500');
+                    card.classList.add('border', 'border-slate-200');
+                }
+            });
+
+            const detailArea = document.getElementById('senseDetailArea');
+            detailArea.innerHTML = `
+                <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
+                    <h3 class="text-xl font-bold text-slate-900">${data.title}</h3>
+                    <span class="text-xs font-bold px-3 py-1 rounded-full ${data.badgeColor}">${data.badge}</span>
+                </div>
+                <p class="text-slate-700 text-sm mb-4 leading-relaxed">${data.description}</p>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <span class="text-xs font-bold text-slate-400 uppercase block mb-2">Exemples faciles :</span>
+                    <div class="space-y-2">
+                        ${data.examples.map(ex => `
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-white p-3 rounded-xl border border-slate-200 text-sm">
+                                <span class="text-slate-900 font-medium">${ex.text}</span>
+                                <span class="text-xs text-slate-500 italic mt-1 sm:mt-0 font-medium">${ex.sub}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderConverter() {
+            const container = document.getElementById('convertorGrid');
+            container.innerHTML = converterItems.map((item, idx) => `
+                <div onclick="toggleConvertorItem(${idx})" id="conv-item-${idx}" class="cursor-pointer bg-white/10 hover:bg-white/20 p-4 rounded-xl border border-white/10 transition-all">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs text-blue-300 font-bold uppercase"><i class="fa-solid fa-pen mr-1"></i> Langue Écrite (NOUS)</span>
+                        <span class="text-xs text-amber-300 font-medium">Cliquer <i class="fa-solid fa-arrows-rotate ml-1"></i></span>
+                    </div>
+                    <p id="conv-text-${idx}" class="text-base font-semibold text-white">${item.nous}</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleConvertorItem(idx) {
+            const textEl = document.getElementById(`conv-text-${idx}`);
+            const item = converterItems[idx];
+            if (textEl.innerHTML === item.nous) {
+                textEl.innerHTML = `<span class="text-amber-300 font-bold">${item.on}</span> <span class="text-xs text-slate-300 font-normal">(Langue parlée)</span>`;
+            } else {
+                textEl.innerHTML = item.nous;
+            }
+        }
+
+        function renderPracticeQuestions() {
+            const container = document.getElementById('practiceQuestionsContainer');
+            container.innerHTML = practiceData.map((q, qIndex) => `
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200">
+                    <p class="font-bold text-slate-900 mb-3 text-sm sm:text-base">${qIndex + 1}. ${q.question}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-3">
+                        ${q.options.map((opt, optIndex) => `
+                            <button onclick="checkPracticeAnswer(${qIndex}, ${optIndex})" id="practice-opt-${qIndex}-${optIndex}" class="practice-opt-btn bg-white hover:bg-slate-100 text-slate-800 font-semibold py-2.5 px-3 rounded-xl border border-slate-300 text-sm transition-all text-center">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="practice-feedback-${qIndex}" class="hidden text-xs sm:text-sm p-3 rounded-xl"></div>
+                </div>
+            `).join('');
+        }
+
+        function checkPracticeAnswer(qIndex, optIndex) {
+            if (practiceState[qIndex] !== undefined) return;
+            practiceState[qIndex] = optIndex;
+
+            const q = practiceData[qIndex];
+            const feedbackEl = document.getElementById(`practice-feedback-${qIndex}`);
+            feedbackEl.classList.remove('hidden');
+
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`practice-opt-${qIndex}-${idx}`);
+                btn.disabled = true;
+                btn.classList.add('cursor-default');
+                if (idx === q.correct) {
+                    btn.classList.remove('bg-white', 'hover:bg-slate-100', 'text-slate-800');
+                    btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                } else if (idx === optIndex && optIndex !== q.correct) {
+                    btn.classList.remove('bg-white', 'hover:bg-slate-100', 'text-slate-800');
+                    btn.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                }
+            });
+
+            if (optIndex === q.correct) {
+                feedbackEl.className = "text-xs sm:text-sm p-3 rounded-xl bg-emerald-100 text-emerald-900 border border-emerald-200";
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> <strong>Bravo !</strong> ${q.explanation}`;
+            } else {
+                feedbackEl.className = "text-xs sm:text-sm p-3 rounded-xl bg-red-100 text-red-900 border border-red-200";
+                feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-red-600 mr-1.5"></i> <strong>Aïe !</strong> ${q.explanation}`;
+            }
+
+            let correctCount = 0;
+            Object.keys(practiceState).forEach(key => {
+                if (practiceState[key] === practiceData[key].correct) correctCount++;
+            });
+            document.getElementById('practiceScore').textContent = `Score : ${correctCount}/${practiceData.length}`;
+        }
+
+        function startQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            quizAnswered = false;
+
+            document.getElementById('quizStartView').classList.add('hidden');
+            document.getElementById('quizResultView').classList.add('hidden');
+            document.getElementById('quizActiveView').classList.remove('hidden');
+
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            quizAnswered = false;
+
+            const q = quizData[quizCurrentIndex];
+            document.getElementById('quizQuestionCounter').textContent = `Question ${quizCurrentIndex + 1} / ${quizData.length}`;
+            document.getElementById('quizScoreDisplay').textContent = `Score : ${quizScore}`;
+            document.getElementById('quizQuestionText').textContent = q.question;
+
+            const optionsContainer = document.getElementById('quizOptionsContainer');
+            optionsContainer.innerHTML = q.options.map((opt, idx) => `
+                <div onclick="selectQuizOption(${idx})" id="quiz-option-${idx}" class="cursor-pointer bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl p-3.5 text-sm font-medium text-slate-800 transition-all flex items-center justify-between">
+                    <span>${opt}</span>
+                    <div class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-xs text-transparent check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+            `).join('');
+
+            const feedbackBox = document.getElementById('quizFeedbackBox');
+            feedbackBox.className = "hidden p-4 rounded-xl mb-6 text-sm";
+            feedbackBox.innerHTML = "";
+
+            const nextBtn = document.getElementById('quizNextBtn');
+            nextBtn.disabled = true;
+            nextBtn.className = "bg-slate-200 text-slate-400 font-bold py-2.5 px-6 rounded-xl transition-all cursor-not-allowed";
+        }
+
+        function selectQuizOption(optIndex) {
+            if (quizAnswered) return;
+
+            quizAnswered = true;
+            const q = quizData[quizCurrentIndex];
+            const isCorrect = optIndex === q.correct;
+
+            if (isCorrect) quizScore++;
+
+            q.options.forEach((_, idx) => {
+                const optEl = document.getElementById(`quiz-option-${idx}`);
+                optEl.classList.remove('hover:bg-slate-100', 'cursor-pointer');
+                
+                if (idx === q.correct) {
+                    optEl.className = "bg-emerald-50 border-2 border-emerald-500 rounded-xl p-3.5 text-sm font-semibold text-emerald-900 flex items-center justify-between";
+                    optEl.querySelector('.check-icon').className = "w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs";
+                } else if (idx === optIndex && !isCorrect) {
+                    optEl.className = "bg-red-50 border-2 border-red-500 rounded-xl p-3.5 text-sm font-semibold text-red-900 flex items-center justify-between";
+                    optEl.querySelector('.check-icon').className = "w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center text-xs";
+                }
+            });
+
+            const feedbackBox = document.getElementById('quizFeedbackBox');
+            feedbackBox.classList.remove('hidden');
+            if (isCorrect) {
+                feedbackBox.className = "p-4 rounded-xl mb-6 text-sm bg-emerald-100 text-emerald-900 border border-emerald-200";
+                feedbackBox.innerHTML = `<div class="font-bold mb-1"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Bravo !</div><div>${q.explanation}</div>`;
+            } else {
+                feedbackBox.className = "p-4 rounded-xl mb-6 text-sm bg-red-100 text-red-900 border border-red-200";
+                feedbackBox.innerHTML = `<div class="font-bold mb-1"><i class="fa-solid fa-circle-xmark text-red-600 mr-1"></i> Dommage...</div><div>${q.explanation}</div>`;
+            }
+
+            const nextBtn = document.getElementById('quizNextBtn');
+            nextBtn.disabled = false;
+            nextBtn.className = "bg-frBlue hover:bg-blue-900 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow cursor-pointer";
+        }
+
+        function nextQuizQuestion() {
+            if (quizCurrentIndex < quizData.length - 1) {
+                quizCurrentIndex++;
+                renderQuizQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quizActiveView').classList.add('hidden');
+            const resultView = document.getElementById('quizResultView');
+            resultView.classList.remove('hidden');
+
+            document.getElementById('quizFinalScore').textContent = `${quizScore} / ${quizData.length}`;
+
+            const iconEl = document.getElementById('quizResultIcon');
+            const titleEl = document.getElementById('quizResultTitle');
+            const subEl = document.getElementById('quizResultSubtitle');
+
+            if (quizScore === quizData.length) {
+                iconEl.className = "w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4";
+                iconEl.innerHTML = `<i class="fa-solid fa-trophy"></i>`;
+                titleEl.textContent = "Score Parfait ! Tout est compris !";
+                subEl.textContent = "Tu maîtrises parfaitement la conjugaison et les sens du pronom « ON ». Félicitations !";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                }
+            } else if (quizScore >= 3) {
+                iconEl.className = "w-20 h-20 bg-blue-100 text-frBlue rounded-full flex items-center justify-center text-4xl mx-auto mb-4";
+                iconEl.innerHTML = `<i class="fa-solid fa-thumbs-up"></i>`;
+                titleEl.textContent = "Très bon résultat !";
+                subEl.textContent = "Tu as bien compris la leçon. Relis juste la règle du verbe pour être imbattable !";
+            } else {
+                iconEl.className = "w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4";
+                iconEl.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+                titleEl.textContent = "Encore un peu d'entraînement !";
+                subEl.textContent = "N'hésite pas à relire les onglets de leçon, surtout la règle de conjugaison du verbe au présent.";
+            }
+        }
+    </script>
+</body>
+</html>
